@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GuessinginTon</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script type="text/javascript">
+      "use strict"
+      // window.onerror=function(message, url, line) {
+      //   alert(`Error: ${message}\n${url}: ${line}`);
+      // }
+      let button = document.querySelector(".btn")
+      button.click = addEventListener("click", () => {
+        let answer, guess
+        let message
+        message = "Guess the Number"
+        answer = random(100)
+        do {
+          guess = prompt(message)
+          if (guess === null) return "Game over"
+          else if (guess < answer) {
+            alert("Too low, try a higher number")
+          } else if (guess < 0) {
+            alert("Hey we aren't using negative numbers")
+          } else if (guess > answer) {
+            alert("Too high, lets go down")
+          } else {
+            Swal.fire({
+              title: "Sweet!",
+              text: "You got it Right",
+              imageUrl:
+                "https://as2.ftcdn.net/v2/jpg/03/04/48/89/1000_F_304488935_fVFJWjyyEGYasnyEvIarwzBIwHcJSKay.jpg",
+              imageWidth: 400,
+              imageHeight: 200,
+              imageAlt: "Custom image",
+            })
+            setTimeout(function () {
+              location.reload()
+            }, 3000)
+          }
+        } while (guess != answer)
+      })
+
+      function random(max) {
+        return Math.floor(Math.random() * max) + 1
+      }
+    </script>
+  </head>
+
+  <body>
+    <h1 class="header">Guess The Number Game</h1>
+    <div class="container">
+      <h1>
+        <p><code>Player: </code>Click the start button to begin</p>
+        <div class="btn-block">
+          <button class="btn">Start Game</button>
+        </div>
+      </h1>
+    </div>
+  </body>
+</html>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  #startgame:hover {
+    background: blue;
+    transition: 2s;
+  }
+  .container {
+    max-width: 400px;
+    align-items: center;
+    background-color: rgb(143, 88, 143);
+    display: flex;
+    margin: 30px auto;
+    overflow: auto;
+    min-height: 450px;
+    border: 1px solid steelblue;
+    padding: 30px;
+    border-radius: 10px;
+  }
+  .header {
+    text-align: center;
+  }
+  .btn {
+    display: inline-block;
+    align-items: center;
+    background: #c1105d;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 16px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    margin-left: 125px;
+    font-family: inherit;
+  }
+  .btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px #c1105d;
+  }
+  .btn:active {
+    transform: scale(0.98);
+  }
+  .btn-block {
+    display: block;
+    width: 100%;
+  }
+  .btn:hover {
+    background: blue;
+    color: #fff;
+    transition: 2s;
+  }
+  body {
+    background-image: url("https://t4.ftcdn.net/jpg/06/28/84/93/240_F_628849373_Vo2dyjrPUohsxggx92IcL3dovbuDcDvE.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    animation: back 5s linear infinite;
+    background-color: black;
+  }
+  @keyframes back {
+    0% {
+      background-position: top center;
+    }
+    25% {
+      background-position: right center;
+    }
+    50% {
+      background-position: left center;
+    }
+    75% {
+      background-position: left top;
+    }
+  }
+</style>
